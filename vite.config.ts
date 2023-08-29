@@ -8,6 +8,8 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 
+import VueDevTools from 'vite-plugin-vue-devtools';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
@@ -19,6 +21,7 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue',
+        'vue-router',
         {
           'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
         },
@@ -30,6 +33,7 @@ export default defineConfig({
     Components({
       resolvers: [NaiveUiResolver()],
     }),
+    VueDevTools(),
   ],
   resolve: {
     alias: {

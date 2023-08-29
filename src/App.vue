@@ -9,15 +9,9 @@
 
 <template>
   <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="theme">
-    <NLoadingBarProvider>
-      <NDialogProvider>
-        <NMessageProvider>
-          <NNotificationProvider>
-            <HelloWorld />
-          </NNotificationProvider>
-        </NMessageProvider>
-      </NDialogProvider>
-    </NLoadingBarProvider>
+    <AppProvider>
+      <RouterView />
+    </AppProvider>
   </NConfigProvider>
 </template>
 
