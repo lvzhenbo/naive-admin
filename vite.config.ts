@@ -33,7 +33,11 @@ export default defineConfig({
     Components({
       resolvers: [NaiveUiResolver()],
     }),
-    VueDevTools(),
+    VueDevTools({
+      analyze: {
+        rerenderTrace: false,
+      },
+    }),
   ],
   resolve: {
     alias: {
