@@ -1,3 +1,13 @@
 {
-  "recommendations": ["Vue.volar", "Vue.vscode-typescript-vue-plugin"]
+  "recommendations": [
+    "Vue.volar",
+    "Vue.vscode-typescript-vue-plugin",
+    "dotenv.dotenv-vscode",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "heybourn.headwind",
+    "davidanson.vscode-markdownlint",
+    "bradlc.vscode-tailwindcss"
+  ]
 }
