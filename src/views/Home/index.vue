@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="n in 1000" :key="n">1</div>
+    <div v-for="n in 100" :key="n">1</div>
   </div>
 </template>
 

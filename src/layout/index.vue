@@ -47,7 +47,7 @@
         content-style="display: flex;min-height: calc(100vh - 4.375rem);"
       >
         <div
-          class="px-2 fixed w-[calc(100%-272px)] transition-all duration-300 z-10"
+          class="px-2 fixed w-[calc(100%-272px)] transition-all duration-300 z-10 backdrop-blur"
           :class="collapsed ? 'w-[calc(100%-64px)]' : 'w-[calc(100%-272px)]'"
         >
           <NTabs type="card" size="small" closable>
@@ -59,7 +59,7 @@
                 <NDropdown
                   trigger="hover"
                   placement="bottom-end"
-                  :options="options"
+                  :options="dropDownOptions"
                   @select="handleSelect"
                 >
                   <NIcon>
@@ -80,7 +80,7 @@
       trigger="manual"
       :x="xRef"
       :y="yRef"
-      :options="options"
+      :options="dropDownOptions"
       :show="showDropdownRef"
       :on-clickoutside="onClickoutside"
       @select="handleSelect"
@@ -89,7 +89,7 @@
 </template>
 
 <script setup lang="tsx">
-  import { NIcon, type MenuOption } from 'naive-ui';
+  import { NIcon, type MenuOption, type DropdownOption } from 'naive-ui';
   import { RouterLink } from 'vue-router';
   import {
     HomeOutlined,
@@ -116,7 +116,7 @@
       ),
     },
   ];
-  const options = [
+  const dropDownOptions: DropdownOption[] = [
     {
       label: '刷新当前',
       key: '1',
