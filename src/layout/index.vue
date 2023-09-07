@@ -47,11 +47,11 @@
         content-style="display: flex;min-height: calc(100vh - 4.375rem);"
       >
         <div
-          class="px-2 fixed w-[calc(100%-272px)] transition-all duration-300 z-10 bg-white"
+          class="px-2 fixed w-[calc(100%-272px)] transition-all duration-300 z-10"
           :class="collapsed ? 'w-[calc(100%-64px)]' : 'w-[calc(100%-272px)]'"
         >
           <NTabs type="card" size="small" closable>
-            <NTab v-for="n in 10" :key="n" :name="n" @contextmenu="handleContextMenu">
+            <NTab v-for="n in 20" :key="n" :name="n" @contextmenu="handleContextMenu">
               标签{{ n }}
             </NTab>
             <template #suffix>
