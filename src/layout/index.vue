@@ -1,19 +1,6 @@
 <template>
   <NLayout content-style="min-height: 100vh" has-sider>
-    <NLayoutSider
-      :native-scrollbar="false"
-      bordered
-      collapse-mode="width"
-      :collapsed-width="64"
-      :collapsed="collapsed"
-    >
-      <NMenu
-        :options="menuOptions"
-        :value="currentMenu"
-        :collapsed="collapsed"
-        :collapsed-width="64"
-      />
-    </NLayoutSider>
+    <Menu :collapsed="collapsed" />
     <NLayout>
       <NLayoutHeader bordered position="absolute">
         <div class="p-4 flex items-center">
@@ -89,10 +76,8 @@
 </template>
 
 <script setup lang="tsx">
-  import { NIcon, type MenuOption, type DropdownOption } from 'naive-ui';
-  import { RouterLink } from 'vue-router';
+  import { NIcon, type DropdownOption } from 'naive-ui';
   import {
-    HomeOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     FullscreenOutlined,
@@ -104,18 +89,8 @@
     DownOutlined,
   } from '@vicons/antd';
   import { useFullscreen } from '@vueuse/core';
+  import Menu from './menu/index.vue';
 
-  const menuOptions: MenuOption[] = [
-    {
-      label: () => <RouterLink to="/">首页</RouterLink>,
-      key: 'home',
-      icon: () => (
-        <NIcon>
-          <HomeOutlined />
-        </NIcon>
-      ),
-    },
-  ];
   const dropDownOptions: DropdownOption[] = [
     {
       label: '刷新当前',
@@ -154,16 +129,11 @@
       ),
     },
   ];
-  const route = useRoute();
   const collapsed = ref(false);
   const { isFullscreen, toggle } = useFullscreen();
   const showDropdownRef = ref(false);
   const xRef = ref(0);
   const yRef = ref(0);
-
-  const currentMenu = computed(() => {
-    return route.name as string;
-  });
 
   const handleFullScreen = () => {
     toggle();
