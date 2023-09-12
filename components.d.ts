@@ -7,25 +7,26 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AppProvider: typeof import('./src/components/AppProvider/AppProvider.vue')['default']
-    NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
-    NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
-    NButton: typeof import('naive-ui')['NButton']
-    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
-    NDialogProvider: typeof import('naive-ui')['NDialogProvider']
-    NDropdown: typeof import('naive-ui')['NDropdown']
-    NLayout: typeof import('naive-ui')['NLayout']
-    NLayoutContent: typeof import('naive-ui')['NLayoutContent']
-    NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
-    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
-    NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
-    NMenu: typeof import('naive-ui')['NMenu']
-    NMessageProvider: typeof import('naive-ui')['NMessageProvider']
-    NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
-    NTab: typeof import('naive-ui')['NTab']
-    NTabs: typeof import('naive-ui')['NTabs']
-    NTooltip: typeof import('naive-ui')['NTooltip']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
+    AppProvider: (typeof import('./src/components/AppProvider/AppProvider.vue'))['default'];
+    NBreadcrumb: (typeof import('naive-ui'))['NBreadcrumb'];
+    NBreadcrumbItem: (typeof import('naive-ui'))['NBreadcrumbItem'];
+    NButton: (typeof import('naive-ui'))['NButton'];
+    NConfigProvider: (typeof import('naive-ui'))['NConfigProvider'];
+    NDialogProvider: (typeof import('naive-ui'))['NDialogProvider'];
+    NDropdown: (typeof import('naive-ui'))['NDropdown'];
+    NIcon: (typeof import('naive-ui'))['NIcon'];
+    NLayout: (typeof import('naive-ui'))['NLayout'];
+    NLayoutContent: (typeof import('naive-ui'))['NLayoutContent'];
+    NLayoutHeader: (typeof import('naive-ui'))['NLayoutHeader'];
+    NLayoutSider: (typeof import('naive-ui'))['NLayoutSider'];
+    NLoadingBarProvider: (typeof import('naive-ui'))['NLoadingBarProvider'];
+    NMenu: (typeof import('naive-ui'))['NMenu'];
+    NMessageProvider: (typeof import('naive-ui'))['NMessageProvider'];
+    NNotificationProvider: (typeof import('naive-ui'))['NNotificationProvider'];
+    NTab: (typeof import('naive-ui'))['NTab'];
+    NTabs: (typeof import('naive-ui'))['NTabs'];
+    NTooltip: (typeof import('naive-ui'))['NTooltip'];
+    RouterLink: (typeof import('vue-router'))['RouterLink'];
+    RouterView: (typeof import('vue-router'))['RouterView'];
   }
 }

@@ -19,6 +19,7 @@ const dashboard: RouteRecordRaw = {
       meta: {
         title: '主控台',
         icon: 'dashboard',
+        affix: true,
       },
     },
     {

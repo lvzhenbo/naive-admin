@@ -22,7 +22,7 @@
   import { NIcon, type MenuOption } from 'naive-ui';
   import { RouterLink } from 'vue-router';
   import { HomeOutlined } from '@vicons/antd';
-  import { usePermissionStore } from '@/stores/modules/permission';
+  import { usePermissionStore } from '@/store/modules/permission';
 
   interface MenuList {
     key: string;

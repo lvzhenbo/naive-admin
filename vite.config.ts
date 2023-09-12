@@ -34,11 +34,7 @@ export default defineConfig({
     Components({
       resolvers: [NaiveUiResolver()],
     }),
-    VueDevTools({
-      analyze: {
-        rerenderTrace: false,
-      },
-    }),
+    VueDevTools(),
   ],
   resolve: {
     alias: {
