@@ -51,7 +51,7 @@
     "vue-tsc": "^1.8.10"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,cjs,mjs,cts,mts}": [
+    "*!{!(auto-imports.d),!(components.d)}.{js,jsx,ts,tsx,cjs,mjs,cts,mts}": [
       "prettier --write",
       "eslint --fix"
     ],
