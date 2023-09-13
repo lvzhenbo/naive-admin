@@ -21,21 +21,17 @@ export const usePermissionStore = defineStore('permission', () => {
     frontMenuList.value = menu;
   }
 
-  function createMenu(menu: RouteRecordRaw[]) {
-    const menuList: MenuList[] = [];
-    menu.forEach((item) => {
+  function createMenu(menu: RouteRecordRaw[]): MenuList[] {
+    return menu.map((item) => {
       const temp: MenuList = { key: item.name as string };
       if (item.children) {
         temp.children = createMenu(item.children);
       }
-      if (item.meta && item.meta.icon) {
-        temp.icon = item.meta?.icon as string;
-      }
+      temp.icon = (item.meta?.icon as string) || '';
       temp.label = (item.meta?.title as string) || '';
       temp.ignoreRoute = (item.meta?.ignoreRoute as boolean) || false;
-      menuList.push(temp);
+      return temp;
     });
-    return menuList;
   }
 
   return {

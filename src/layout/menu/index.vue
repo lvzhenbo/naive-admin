@@ -7,6 +7,7 @@
     :collapsed="collapsed"
   >
     <NMenu
+      ref="menuInstRef"
       v-model:value="currentMenu"
       :options="menuOptions"
       :collapsed="collapsed"
@@ -19,7 +20,7 @@
 </template>
 
 <script setup lang="tsx">
-  import { NIcon, type MenuOption } from 'naive-ui';
+  import { NIcon, type MenuOption, type MenuInst } from 'naive-ui';
   import { RouterLink } from 'vue-router';
   import { HomeOutlined } from '@vicons/antd';
   import { usePermissionStore } from '@/store/modules/permission';
@@ -39,6 +40,7 @@
   const menuOptions = ref<MenuOption[]>([]);
   const currentMenu = ref<string>(route.name as string);
   const openKeys = ref<string[]>(route.matched.map((item) => item.name as string));
+  const menuInstRef = ref<MenuInst | null>(null);
 
   // 临时
   onMounted(() => {
@@ -48,28 +50,29 @@
 
   watch(route, (val) => {
     currentMenu.value = val.name as string;
+    menuInstRef.value?.showOption(val.name as string);
   });
 
-  function createMenu(menu: MenuList[]) {
-    const menuList: MenuOption[] = [];
-    menu.forEach((item) => {
-      const temp: MenuOption = { key: item.key };
-      if (item.children) {
-        temp.children = createMenu(item.children);
-      }
-      temp.icon = () => (
-        <NIcon>
-          <HomeOutlined />
-        </NIcon>
-      );
-      if (item.ignoreRoute) {
-        temp.label = item.label;
-      } else {
-        temp.label = () => <RouterLink to={{ name: item.key }}>{item.label}</RouterLink>;
-      }
-      menuList.push(temp);
-    });
-    return menuList;
+  function createMenu(menu: MenuList[], menuList: MenuOption[] = []): MenuOption[] {
+    if (menu.length === 0) {
+      return menuList;
+    }
+    const [first, ...rest] = menu;
+    const temp: MenuOption = { key: first.key };
+    if (first.children) {
+      temp.children = createMenu(first.children);
+    }
+    temp.icon = () => (
+      <NIcon>
+        <HomeOutlined />
+      </NIcon>
+    );
+    if (first.ignoreRoute) {
+      temp.label = first.label;
+    } else {
+      temp.label = () => <RouterLink to={{ name: first.key }}>{first.label}</RouterLink>;
+    }
+    return createMenu(rest, [...menuList, temp]);
   }
 </script>
 
