@@ -24,7 +24,7 @@ export default defineConfig({
         'vue-router',
         'pinia',
         {
-          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar', 'useOsTheme'],
         },
       ],
       eslintrc: {

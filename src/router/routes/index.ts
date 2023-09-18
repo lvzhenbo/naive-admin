@@ -27,4 +27,13 @@ export const RootRoute: RouteRecordRaw = {
   },
 };
 
-export const basicRoutes: RouteRecordRaw[] = [RootRoute];
+export const LoginRoute: RouteRecordRaw = {
+  path: '/login',
+  name: 'Login',
+  component: () => import('@/views/login/index.vue'),
+  meta: {
+    title: '登录',
+  },
+};
+
+export const basicRoutes: RouteRecordRaw[] = [RootRoute, LoginRoute];
