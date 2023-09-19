@@ -12,13 +12,14 @@ interface MenuList {
 export const usePermissionStore = defineStore('permission', () => {
   const frontMenuList = ref<MenuList[]>([]);
 
-  const getFrontMenuList = (): MenuList[] => {
+  const getFrontMenuList = computed((): MenuList[] => {
     return frontMenuList.value;
-  };
+  });
 
   async function buildRoutes() {
     const menu: MenuList[] = createMenu(asyncRoutes);
     frontMenuList.value = menu;
+    return asyncRoutes;
   }
 
   function createMenu(menu: RouteRecordRaw[]): MenuList[] {
@@ -34,9 +35,20 @@ export const usePermissionStore = defineStore('permission', () => {
     });
   }
 
+  const isDynamicAddedRoute = ref(false);
+  const getIsDynamicAddedRoute = computed(() => {
+    return isDynamicAddedRoute.value;
+  });
+  function setDynamicAddedRoute(val: boolean) {
+    isDynamicAddedRoute.value = val;
+  }
+
   return {
     frontMenuList,
+    isDynamicAddedRoute,
     getFrontMenuList,
+    getIsDynamicAddedRoute,
     buildRoutes,
+    setDynamicAddedRoute,
   };
 });

@@ -43,12 +43,17 @@
   import Background from './components/Background.vue';
   import type { CardProps, FormInst, FormRules } from 'naive-ui';
   import { UserOutlined, LockOutlined } from '@vicons/antd';
+  import { useUserStore } from '@/store/modules/user';
+  import { usePermissionStore } from '@/store/modules/permission';
 
   type CardThemeOverrides = NonNullable<CardProps['themeOverrides']>;
 
   const osThemeRef = useOsTheme();
   const message = useMessage();
   const router = useRouter();
+  const route = useRoute();
+  const userStore = useUserStore();
+  const permissionStore = usePermissionStore();
   const cardThemeOverrides = computed(() => {
     return {
       color: osThemeRef.value === 'dark' ? '#00000066' : '#FFFFFF44',
@@ -70,11 +75,23 @@
       if (!errors) {
         loading.value = true;
         message.loading('登录中');
-        setTimeout(() => {
+        setTimeout(async () => {
+          userStore.setUserInfo({
+            name: 'admin',
+            avatar: 'https://avatars.githubusercontent.com/u/499550?v=4',
+            token: '123456',
+          });
+          if (!permissionStore.isDynamicAddedRoute) {
+            const routes = await permissionStore.buildRoutes();
+            routes.forEach((route) => {
+              router.addRoute(route);
+            });
+            permissionStore.setDynamicAddedRoute(true);
+          }
           loading.value = false;
           message.destroyAll();
           message.success('登录成功');
-          router.push('/');
+          router.replace((route.query.redirect as string) || '/');
         }, 1000);
       }
     });

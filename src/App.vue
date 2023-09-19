@@ -1,12 +1,10 @@
 <script setup lang="ts">
   import { zhCN, dateZhCN, darkTheme, lightTheme } from 'naive-ui';
-  import { usePermissionStore } from '@/store/modules/permission';
 
   const osThemeRef = useOsTheme();
   const theme = computed(() => {
     return osThemeRef.value === 'dark' ? darkTheme : lightTheme;
   });
-  usePermissionStore().buildRoutes();
 </script>
 
 <template>

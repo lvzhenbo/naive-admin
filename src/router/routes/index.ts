@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
+import { PAGE_NOT_FOUND_ROUTE } from './basic';
 
 interface ModuleType {
   default: Array<RouteRecordRaw> | RouteRecordRaw;
@@ -27,6 +28,7 @@ export const RootRoute: RouteRecordRaw = {
   },
 };
 
+// 登录路由
 export const LoginRoute: RouteRecordRaw = {
   path: '/login',
   name: 'Login',
@@ -36,4 +38,4 @@ export const LoginRoute: RouteRecordRaw = {
   },
 };
 
-export const basicRoutes: RouteRecordRaw[] = [RootRoute, LoginRoute];
+export const basicRoutes: RouteRecordRaw[] = [RootRoute, LoginRoute, PAGE_NOT_FOUND_ROUTE];

@@ -41,11 +41,10 @@
   const currentMenu = ref<string>(route.name as string);
   const openKeys = ref<string[]>(route.matched.map((item) => item.name as string));
   const menuInstRef = ref<MenuInst | null>(null);
+  const permissionStore = usePermissionStore();
 
-  // 临时
   onMounted(() => {
-    const permissionStore = usePermissionStore();
-    menuOptions.value = createMenu(permissionStore.getFrontMenuList());
+    menuOptions.value = createMenu(permissionStore.getFrontMenuList);
   });
 
   watch(route, (val) => {
