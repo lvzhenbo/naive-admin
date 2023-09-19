@@ -49,13 +49,7 @@ module.exports = {
         math: 'always',
       },
     ],
-    // 禁止未使用变量，除了下划线开头 https://eslint.org/docs/latest/rules/no-unused-vars
-    'no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
-    ],
+    // 禁止未使用变量 https://eslint.org/docs/latest/rules/no-unused-vars
+    'no-unused-vars': 'off',
   },
 };
