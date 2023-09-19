@@ -8,8 +8,17 @@
         </NIcon>
       </NButton>
       <NBreadcrumb class="ml-2">
-        <NBreadcrumbItem> 首页 </NBreadcrumbItem>
-        <NBreadcrumbItem> 首页</NBreadcrumbItem>
+        <template
+          v-for="routeItem in breadcrumbList"
+          :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name"
+        >
+          <NBreadcrumbItem>
+            <span class="link-text">
+              <component :is="routeItem.meta.icon" />
+              {{ routeItem.meta.title }}
+            </span>
+          </NBreadcrumbItem>
+        </template>
       </NBreadcrumb>
       <NTooltip trigger="hover">
         <template #trigger>
@@ -54,6 +63,28 @@
   const handleFullScreen = () => {
     toggle();
   };
+
+  const route = useRoute();
+  const generator: any = (routerMap: any[]) => {
+    return routerMap.map((item) => {
+      const currentMenu = {
+        ...item,
+        label: item.meta.title,
+        key: item.name,
+        disabled: item.path === '/',
+      };
+      // 是否有子菜单，并递归处理
+      if (item.children && item.children.length > 0) {
+        // Recursion
+        currentMenu.children = generator(item.children, currentMenu);
+      }
+      return currentMenu;
+    });
+  };
+
+  const breadcrumbList = computed(() => {
+    return generator(route.matched);
+  });
 </script>
 
 <style scoped></style>
