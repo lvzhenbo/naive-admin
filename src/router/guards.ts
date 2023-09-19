@@ -15,11 +15,13 @@ export function createRouterGuards(router: Router) {
     const userStore = useUserStore();
     const permissionStore = usePermissionStore();
 
+    // 登录页直接跳转
     if (to.path === '/login') {
       next();
       return;
     }
 
+    // 未登录跳转登录页
     if (!userStore.userInfo?.token) {
       const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
         path: '/login',
@@ -35,11 +37,13 @@ export function createRouterGuards(router: Router) {
       return;
     }
 
+    // 已登录且动态添加路由，直接跳转
     if (permissionStore.getIsDynamicAddedRoute) {
       next();
       return;
     }
 
+    // 已登录且未动态添加路由，动态添加路由
     if (!permissionStore.isDynamicAddedRoute) {
       const routes = await permissionStore.buildRoutes();
       routes.forEach((route) => {
