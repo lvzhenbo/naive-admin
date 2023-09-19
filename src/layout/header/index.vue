@@ -8,17 +8,14 @@
         </NIcon>
       </NButton>
       <NBreadcrumb class="ml-2">
-        <template
+        <NBreadcrumbItem
           v-for="routeItem in breadcrumbList"
           :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name"
         >
-          <NBreadcrumbItem>
-            <span class="link-text">
-              <component :is="routeItem.meta.icon" />
-              {{ routeItem.meta.title }}
-            </span>
-          </NBreadcrumbItem>
-        </template>
+          <span class="link-text">
+            {{ routeItem.meta.title }}
+          </span>
+        </NBreadcrumbItem>
       </NBreadcrumb>
       <NTooltip trigger="hover">
         <template #trigger>
@@ -43,6 +40,7 @@
     FullscreenExitOutlined,
   } from '@vicons/antd';
   import { useFullscreen } from '@vueuse/core';
+  import type { RouteLocationMatched } from 'vue-router';
 
   const props = defineProps({
     collapsed: Boolean,
@@ -65,17 +63,18 @@
   };
 
   const route = useRoute();
-  const generator: any = (routerMap: any[]) => {
-    return routerMap.map((item) => {
+  const generator = (routerMap: RouteLocationMatched[]) => {
+    return routerMap.map((item: RouteLocationMatched) => {
       const currentMenu = {
         ...item,
         label: item.meta.title,
         key: item.name,
         disabled: item.path === '/',
       };
+
       // 是否有子菜单，并递归处理
       if (item.children && item.children.length > 0) {
-        // Recursion
+        //此处存在问题留待解决：“应有 1 个参数，但获得 2 个。”
         currentMenu.children = generator(item.children, currentMenu);
       }
       return currentMenu;
