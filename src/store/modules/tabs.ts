@@ -23,11 +23,22 @@ export const useTabsStore = defineStore(
     const changeTabsList = (list: TabList[]) => {
       tabsList.value = list;
     };
+    const clearTabsList = () => {
+      tabsList.value = [
+        {
+          name: '主控台',
+          path: '/dashboard/main',
+          query: null,
+          affix: true,
+        },
+      ];
+    };
 
     return {
       tabsList,
       getTabsList,
       changeTabsList,
+      clearTabsList,
     };
   },
   {
