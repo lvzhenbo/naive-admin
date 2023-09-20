@@ -128,7 +128,11 @@
 
   onMounted(() => {
     tabList.value = tabsStore.getTabsList;
-    if (!route.meta.affix && !tabList.value.find((item) => item.path === route.fullPath)) {
+    if (
+      !route.meta.affix &&
+      !tabList.value.find((item) => item.path === route.fullPath) &&
+      route.name !== 'PageNotFound404'
+    ) {
       tabList.value.push({
         name: (route.meta.title as string) || (route.name as string),
         path: route.fullPath,
@@ -143,7 +147,7 @@
     const index = tabList.value.findIndex((item) => item.path === val.fullPath);
     currentTab.value = val.fullPath;
     isAffix.value = val.meta.affix ? true : false;
-    if (index === -1) {
+    if (index === -1 && val.name !== 'PageNotFound404') {
       tabList.value.push({
         name: (val.meta.title as string) || (val.name as string),
         path: val.fullPath,

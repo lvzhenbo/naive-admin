@@ -15,9 +15,13 @@ export const useUserStore = defineStore(
       userInfo.value = info;
     };
 
+    const clearUserInfo = () => {
+      userInfo.value = undefined;
+    };
     return {
       userInfo,
       setUserInfo,
+      clearUserInfo,
     };
   },
   {
