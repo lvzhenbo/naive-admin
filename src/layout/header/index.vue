@@ -29,13 +29,8 @@
       <NDropdown :options="options" @select="handleSelect">
         <NButton quaternary class="!ml-2">
           <div class="flex items-center">
-            <NAvatar
-              round
-              :size="24"
-              class="mr-2"
-              src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
-            />
-            用户资料
+            <NAvatar round :size="24" class="mr-2" :src="userStore.userInfo?.avatar || ''" />
+            {{ userStore.userInfo?.name || '用户名称' }}
           </div>
         </NButton>
       </NDropdown>
@@ -76,6 +71,7 @@
   const router = useRouter();
   const dialog = useDialog();
   const message = useMessage();
+  const userStore = useUserStore();
   const collapsed = computed(() => {
     return props.collapsed;
   });
@@ -120,7 +116,7 @@
         positiveText: '确定',
         negativeText: '取消',
         onPositiveClick: () => {
-          useUserStore().clearUserInfo();
+          userStore.clearUserInfo();
           useTabsStore().clearTabsList();
           message.success('退出成功！');
           router.replace({

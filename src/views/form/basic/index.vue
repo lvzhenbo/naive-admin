@@ -1,5 +1,7 @@
 <template>
-  <div> 测试 </div>
+  <div>
+    <BasicForm />
+  </div>
 </template>
 
 <script setup lang="ts"></script>
