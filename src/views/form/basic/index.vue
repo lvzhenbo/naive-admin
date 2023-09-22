@@ -1,9 +1,24 @@
 <template>
   <div>
-    <BasicForm />
+    <BasicForm :schema="schema" />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import type { FormSchema } from '@/components/BasicForm/BasicForm';
+
+  const schema = ref<FormSchema[]>([
+    {
+      field: 'input',
+      component: 'Input',
+      label: '输入框',
+    },
+    {
+      field: 'select',
+      component: 'Select',
+      label: '选择器',
+    },
+  ]);
+</script>
 
 <style scoped></style>

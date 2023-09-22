@@ -1,29 +1,36 @@
 <template>
   <NForm v-bind="formProps">
     <NGrid v-bind="gridProps">
-      <NGi>
-        <NFormItem label="输入框"> <NInput /> </NFormItem>
+      <NGi v-for="item in schema" :key="item.field" :span="8">
+        <!-- <NFormItem label="输入框"> <NInput /> </NFormItem> -->
+        <FormItem :schema="item" />
       </NGi>
-      <NGi :span="gridProps.cols">
-        <NButton type="primary">提交</NButton>
+      <NGi v-if="showActionButton" v-bind="actionGridItemProps">
+        <NSpace v-bind="actionSpaceProps">
+          <NButton>重置</NButton>
+          <NButton type="primary">提交</NButton>
+        </NSpace>
       </NGi>
     </NGrid>
   </NForm>
 </template>
 
 <script setup lang="ts">
-  import type { FormProps, GridProps } from 'naive-ui';
-  interface Props {
-    formProps: FormProps;
-    gridProps: GridProps;
-  }
-  withDefaults(defineProps<Props>(), {
+  import type { BasicFormProps } from './BasicForm';
+  import FormItem from './components/FormItem.vue';
+
+  withDefaults(defineProps<BasicFormProps>(), {
     formProps: () => ({
       labelPlacement: 'left',
     }),
-    gridProps: () => ({
-      cols: 1,
+    showActionButton: true,
+    actionGridItemProps: () => ({
+      span: 24,
     }),
+    actionSpaceProps: () => ({
+      justify: 'end',
+    }),
+    schema: () => [],
   });
 </script>
 

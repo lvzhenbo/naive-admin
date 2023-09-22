@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppProvider: typeof import('./src/components/AppProvider/AppProvider.vue')['default']
     BasicForm: typeof import('./src/components/BasicForm/BasicForm.vue')['default']
+    FormItem: typeof import('./src/components/BasicForm/components/FormItem.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
     NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
@@ -32,6 +33,7 @@ declare module 'vue' {
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NResult: typeof import('naive-ui')['NResult']
+    NSpace: typeof import('naive-ui')['NSpace']
     NTab: typeof import('naive-ui')['NTab']
     NTabs: typeof import('naive-ui')['NTabs']
     NTooltip: typeof import('naive-ui')['NTooltip']
