@@ -5,7 +5,7 @@
 </template>
 
 <script lang="tsx" setup>
-  import type { FormSchema } from '../BasicForm';
+  import type { FormSchema } from '../BasicFormType';
   import { componentMap } from '../componentMap';
 
   interface FormItemProps {

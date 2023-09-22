@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  import type { FormSchema } from '@/components/BasicForm/BasicForm';
+  import type { FormSchema } from '@/components/BasicForm/BasicFormType';
 
   const schema = ref<FormSchema[]>([
     {

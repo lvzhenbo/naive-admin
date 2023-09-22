@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-  import type { BasicFormProps } from './BasicForm';
+  import type { BasicFormProps } from './BasicFormType';
   import FormItem from './components/FormItem.vue';
 
   withDefaults(defineProps<BasicFormProps>(), {
