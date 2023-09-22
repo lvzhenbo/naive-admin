@@ -1,25 +1,16 @@
-<script lang="tsx">
-  import type { PropType } from 'vue';
+<template>
+  <NFormItem :label="schema.label">
+    <component :is="componentMap.get(schema.component)" />
+  </NFormItem>
+</template>
+
+<script lang="tsx" setup>
   import type { FormSchema } from '../BasicForm';
-  import { NFormItem } from 'naive-ui';
   import { componentMap } from '../componentMap';
 
-  export default defineComponent({
-    name: 'FormItem',
-    props: {
-      schema: {
-        type: Object as PropType<FormSchema>,
-        default: () => ({}),
-      },
-    },
-    setup(props) {
-      const { schema } = props;
-      const Comp = componentMap.get(schema.component) as any;
-      return () => (
-        <NFormItem label={schema.label}>
-          <Comp />
-        </NFormItem>
-      );
-    },
-  });
+  interface FormItemProps {
+    schema: FormSchema;
+  }
+
+  defineProps<FormItemProps>();
 </script>
