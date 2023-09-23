@@ -1,6 +1,6 @@
 <template>
   <NFormItem :label="schema.label">
-    <component :is="componentMap.get(schema.component)" />
+    <component :is="componentMap.get(schema.component)" v-bind="schema.componentProps" />
   </NFormItem>
 </template>
 

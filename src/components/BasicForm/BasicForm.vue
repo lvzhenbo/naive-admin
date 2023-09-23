@@ -1,7 +1,7 @@
 <template>
   <NForm v-bind="formProps">
     <NGrid v-bind="gridProps">
-      <NGi v-for="item in schema" :key="item.field" :span="8">
+      <NGi v-for="item in schema" :key="item.field" v-bind="item.gridItemProps">
         <!-- <NFormItem label="输入框"> <NInput /> </NFormItem> -->
         <FormItem :schema="item" />
       </NGi>

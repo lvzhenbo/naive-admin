@@ -1,5 +1,5 @@
 import type { FormProps, GridProps, GridItemProps, SpaceProps } from 'naive-ui';
-import type { ComponentType } from './componentMap';
+import type { ComponentType, ComponentProps } from './componentMap';
 
 export interface BasicFormProps {
   formProps?: FormProps;
@@ -27,8 +27,8 @@ export interface FormSchema {
   field: string;
   label?: string;
   component: ComponentType;
-  // componentProps?: Record<string, unknown>;
-  // gridItemProps?: GridItemProps;
+  componentProps?: ComponentProps[ComponentType];
+  gridItemProps?: GridItemProps;
   // rules?: unknown[];
   // slot?: string;
 }

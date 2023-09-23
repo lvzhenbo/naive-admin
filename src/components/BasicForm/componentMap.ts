@@ -20,6 +20,48 @@ import {
   NUpload,
 } from 'naive-ui';
 
+import type {
+  InputProps,
+  InputNumberProps,
+  InputGroupProps,
+  AutoCompleteProps,
+  SelectProps,
+  TreeSelectProps,
+  SwitchProps,
+  RadioGroupProps,
+  CheckboxProps,
+  CheckboxGroupProps,
+  CascaderProps,
+  SliderProps,
+  RateProps,
+  TransferProps,
+  DatePickerProps,
+  TimePickerProps,
+  ColorPickerProps,
+  UploadProps,
+} from 'naive-ui';
+
+export type ComponentProps = {
+  Input: InputProps;
+  InputNumber: InputNumberProps;
+  InputGroup: InputGroupProps;
+  AutoComplete: AutoCompleteProps;
+  Select: SelectProps;
+  TreeSelect: TreeSelectProps;
+  Switch: SwitchProps;
+  RadioGroup: RadioGroupProps;
+  Checkbox: CheckboxProps;
+  CheckboxGroup: CheckboxGroupProps;
+  Cascader: CascaderProps;
+  Slider: SliderProps;
+  Rate: RateProps;
+  Transfer: TransferProps;
+  DatePicker: DatePickerProps;
+  TimePicker: TimePickerProps;
+  ColorPicker: ColorPickerProps;
+  Upload: UploadProps;
+};
+
 export type ComponentType =
   | 'Input'
   | 'InputNumber'
