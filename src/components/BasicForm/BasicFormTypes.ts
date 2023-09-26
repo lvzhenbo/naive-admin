@@ -29,6 +29,7 @@ export interface FormSchema {
   component: ComponentType;
   componentProps?: ComponentProps[ComponentType];
   gridItemProps?: GridItemProps;
+  defaultValue?: unknown;
   // rules?: unknown[];
   // slot?: string;
 }

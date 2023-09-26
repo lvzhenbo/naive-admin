@@ -3,7 +3,7 @@
     <NGrid v-bind="gridProps">
       <NGi v-for="item in schema" :key="item.field" v-bind="item.gridItemProps">
         <!-- <NFormItem label="输入框"> <NInput /> </NFormItem> -->
-        <FormItem :schema="item" />
+        <FormItem :schema="item" @update:value="setFieldValue" />
       </NGi>
       <NGi v-if="showActionButton" v-bind="actionGridItemProps">
         <NSpace v-bind="actionSpaceProps">
@@ -19,9 +19,14 @@
   import type { BasicFormProps } from './BasicFormTypes';
   import FormItem from './components/FormItem.vue';
 
+  type Recordable<T = any> = Record<string, T>;
+
   withDefaults(defineProps<BasicFormProps>(), {
     formProps: () => ({
       labelPlacement: 'left',
+    }),
+    gridProps: () => ({
+      xGap: 12,
     }),
     showActionButton: true,
     actionGridItemProps: () => ({
@@ -32,6 +37,10 @@
     }),
     schema: () => [],
   });
+
+  const setFieldValue = (value: Recordable) => {
+    console.log(value);
+  };
 </script>
 
 <style scoped></style>
