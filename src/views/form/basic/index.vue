@@ -1,12 +1,14 @@
 <template>
   <div>
-    <BasicForm :schema="schema" />
+    <BasicForm ref="basicFormRef" :schema="schema" />
+    <NButton @click="handleSubmit">提交</NButton>
   </div>
 </template>
 
 <script setup lang="ts">
-  import type { FormSchema } from '@/components/BasicForm/BasicFormTypes';
+  import type { FormSchema, BasicFormInst } from '@/components/BasicForm/BasicFormTypes';
 
+  const basicFormRef = ref<BasicFormInst | null>(null);
   const schema = ref<FormSchema[]>([
     {
       field: 'input',
@@ -40,6 +42,19 @@
       },
     },
   ]);
+
+  onMounted(async () => {
+    await basicFormRef.value?.setFieldsValue({
+      input: '123',
+      select: '2',
+      inputNumber: 123,
+    });
+  });
+
+  const handleSubmit = async () => {
+    const values = await basicFormRef.value?.getFieldsValue();
+    console.log(values);
+  };
 </script>
 
 <style scoped></style>

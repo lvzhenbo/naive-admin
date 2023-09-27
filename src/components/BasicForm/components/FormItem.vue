@@ -14,17 +14,23 @@
 
   interface FormItemProps {
     schema: FormSchema;
+    value: any;
   }
 
   const props = defineProps<FormItemProps>();
   const value = ref(props.schema.defaultValue || undefined);
   const emit = defineEmits(['update:value']);
 
+  watch(value, (val) => {
+    emit('update:value', { [props.schema.field]: val });
+  });
+
   watch(
-    value,
+    () => props.value,
     (val) => {
-      emit('update:value', { [props.schema.field]: val });
+      if (val) {
+        value.value = val;
+      }
     },
-    { immediate: true },
   );
 </script>

@@ -1,5 +1,8 @@
 import type { FormProps, GridProps, GridItemProps, SpaceProps } from 'naive-ui';
 import type { ComponentType, ComponentProps } from './componentMap';
+import BasicForm from './BasicForm.vue';
+
+export type BasicFormInst = InstanceType<typeof BasicForm>;
 
 export interface BasicFormProps {
   formProps?: FormProps;
