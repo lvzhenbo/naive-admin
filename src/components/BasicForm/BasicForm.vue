@@ -19,8 +19,6 @@
   import type { BasicFormProps } from './BasicFormTypes';
   import FormItem from './components/FormItem.vue';
 
-  type Recordable<T = any> = Record<string, T>;
-
   const props = withDefaults(defineProps<BasicFormProps>(), {
     formProps: () => ({
       labelPlacement: 'left',

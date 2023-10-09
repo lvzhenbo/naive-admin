@@ -4,8 +4,6 @@ import { useUserStore } from '@/store/modules/user';
 import { usePermissionStore } from '@/store/modules/permission';
 import { PAGE_NOT_FOUND_ROUTE } from './routes/basic';
 
-type Recordable<T = any> = Record<string, T>;
-
 export function createRouterGuards(router: Router) {
   const loadingBar = useLoadingBar();
 
