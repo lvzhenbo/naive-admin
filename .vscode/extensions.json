@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "Vue.volar",
-    "Vue.vscode-typescript-vue-plugin",
     "dotenv.dotenv-vscode",
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
